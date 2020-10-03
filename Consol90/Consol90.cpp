@@ -7,6 +7,10 @@ int main()
 {
     std::cout << "1.Hello World!\n";
     std::cout << "2.Hello!\n";
+    
+    
+    
+    std::cout << "thi is github";
 
 }
 
