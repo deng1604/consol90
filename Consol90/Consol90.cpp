@@ -1,32 +1,75 @@
-﻿// Consol90.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
-//
-
-#include <iostream>
+﻿#include <iostream>
+#include "Stack.h"
+using namespace std;
 
 int main()
 {
-    std::cout << "1.Hello World!\n";
-    std::cout << "2.Hello!\n";
-    
-    std::cout << "thi is github"; std::cout << "thi is github"; std::cout << "thi is github"; std::cout << "thi is github";
-    // 
-    //
-    //
-    //
-    //
-    //
-    //
-    //
+    charStack myStack(2);
+    myStack.push('a');
+    myStack.push('b');
 
+    cout << myStack.isFull() << endl; // 1
+    cout << myStack.getTop() << endl; // b
+    cout << myStack.pop() << endl;    // b
+    cout << myStack.pop() << endl;    // a
+    cout << myStack.isEmpty() << endl;// 1
+
+    /* 异常处理 */
+    try
+    {
+        myStack.push('1');
+        myStack.push('2');
+        myStack.push('3');
+    }
+    catch (charStack::Full)
+    {
+        cout << "Stack Full!!!" << endl;
+    }
+
+    try
+    {
+        cout << myStack.pop() << endl;
+        cout << myStack.pop() << endl;
+        cout << myStack.pop() << endl;
+    }
+    catch (charStack::Empty)
+    {
+        cout << "Stack Empty!!!" << endl;
+    }
+
+    /* double类型的栈 */
+    doubleStack myStack_2(2);
+    myStack_2.push(333);
+    myStack_2.push(666);
+
+    cout << myStack_2.isFull() << endl; // 1
+    cout << myStack_2.getTop() << endl; // 666
+    cout << myStack_2.pop() << endl;    // 666
+    cout << myStack_2.pop() << endl;    // 333
+    cout << myStack_2.isEmpty() << endl;// 1
+
+    /* 异常处理 */
+    try
+    {
+        myStack_2.push(123);
+        myStack_2.push(456);
+        myStack_2.push(789);
+    }
+    catch (doubleStack::Full)
+    {
+        cout << "Stack Full!!!" << endl;
+    }
+
+    try
+    {
+        cout << myStack_2.pop() << endl;
+        cout << myStack_2.pop() << endl;
+        cout << myStack_2.pop() << endl;
+    }
+    catch (doubleStack::Empty)
+    {
+        cout << "Stack Empty!!!" << endl;
+    }
+
+    return 0;
 }
-
-// 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
-// 调试程序: F5 或调试 >“开始调试”菜单
-
-// 入门使用技巧: 
-//   1. 使用解决方案资源管理器窗口添加/管理文件
-//   2. 使用团队资源管理器窗口连接到源代码管理
-//   3. 使用输出窗口查看生成输出和其他消息
-//   4. 使用错误列表窗口查看错误
-//   5. 转到“项目”>“添加新项”以创建新的代码文件，或转到“项目”>“添加现有项”以将现有代码文件添加到项目
-//   6. 将来，若要再次打开此项目，请转到“文件”>“打开”>“项目”并选择 .sln 文件
